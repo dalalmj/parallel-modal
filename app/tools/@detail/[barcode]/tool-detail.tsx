@@ -1,6 +1,5 @@
 "use client";
 import { Dialog } from "@headlessui/react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export function ToolDetail({
@@ -21,10 +20,10 @@ export function ToolDetail({
     <Dialog open={true} onClose={handleClose} className="relative z-50">
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
       <div className="fixed inset-0  flex items-center justify-center p-4">
-        <Dialog.Panel className="mx-auto w-3/5 rounded bg-slate-300 dark:bg-slate-700">
+        <Dialog.Panel className="mx-auto w-3/5 rounded bg-background">
           <div className="m-4 flex flex-col  rounded-md border p-4">
             <div className="flex flex-row flex-nowrap p-12 gap-4">
-              <div className="text-4xl font-bold border-2 rounded-md w-20 h-20 flex justify-center items-center bg-slate-400 dark:bg-slate-600">
+              <div className="text-4xl font-bold border-2 rounded-md w-20 h-20 flex justify-center items-center bg-primary text-primary-foreground">
                 {tool?.tool_name.substring(0, 1)}
               </div>
               <div>
@@ -32,7 +31,9 @@ export function ToolDetail({
                 <h2 className="text-base ">
                   {tool?.manufacturer} - {tool?.model}
                 </h2>
-                <div className="text-sm ">{tool?.barcode}</div>
+                <div className="text-sm text-muted-foreground ">
+                  {tool?.barcode}
+                </div>
               </div>
             </div>
             <button className="mt-4 self-end" onClick={handleClose}>

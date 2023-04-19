@@ -11,20 +11,22 @@ async function getData() {
 export default async function ListPage() {
   const data = await getData();
   return (
-    <div className="flex flex-wrap w-full overflow-y-auto ">
+    <div className="flex flex-wrap gap-2 w-full overflow-y-auto ">
       {data.map((item, i) => (
         <Link
           href={`/tools/${item.barcode}`}
           key={`${i}`}
-          className="bg-slate-100 dark:bg-slate-900 flex flex-row flex-nowrap gap-2 m-4 p-4 rounded-md w-2/5"
+          className="flex flex-row flex-nowrap gap-2 p-4 rounded-lg max-w-sm w-full bg-background hover:bg-muted"
           replace={true}
         >
-          <div className="bg-slate-200 dark:bg-slate-800 text-2xl font-bold border-2 rounded-full w-12 h-12 flex justify-center items-center">
+          <div className=" text-2xl border-muted-foreground font-semibold border-2 rounded-full w-12 h-12 flex justify-center items-center">
             {item.tool_name.substring(0, 1)}
           </div>
           <div>
             <h1 className="text-base ">{item.tool_name}</h1>
-            <h2 className="text-sm ">{item.manufacturer}</h2>
+            <h2 className="text-sm text-muted-foreground ">
+              {item.manufacturer}
+            </h2>
           </div>
         </Link>
       ))}
